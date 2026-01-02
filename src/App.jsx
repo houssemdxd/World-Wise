@@ -6,22 +6,24 @@ import './App.css'
 import { BrowserRouter, Routes ,Route} from 'react-router-dom'
 import Product from './pages/product'
 import Pricing from './pages/Pricing'
-import HomePage from './pages/HomePage'
+import Homepage from './pages/HomePage'
 import NotFound from './pages/NotFound'
+import AppLayout from './pages/AppLayout'
+import Login from './pages/Login'
 function App() {
   const [count, setCount] = useState(0)
 
   return (
 <>
-
-<h3>hello every one </h3>
    <BrowserRouter>
    
    <Routes>
 
     <Route path ="product" element = {<Product/>} />
     <Route path='pricing' element = {<Pricing/>}  />
-     <Route path='homepage' element ={ <HomePage/> } />
+    <Route path='/' element ={ <Homepage/> } />
+    <Route  path="app" element ={<AppLayout/>}  />
+    <Route path='login' element ={<Login/>}></Route>
      <Route path='*' element ={<NotFound/>} />
    </Routes>
    
