@@ -12,6 +12,9 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
+<>
+
+<h3>hello every one </h3>
    <BrowserRouter>
    
    <Routes>
@@ -23,6 +26,7 @@ function App() {
    </Routes>
    
     </BrowserRouter>
+    </>
   )
 }
 

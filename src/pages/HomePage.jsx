@@ -1,8 +1,15 @@
-
+import PageNav from "../Components/PageNav"
 
 export default function  HomePage()  {
     return (
-      <div><h1>World Wise</h1> </div>
+      <div>
+        
+        <PageNav></PageNav>
+        <h1> Home World Wise</h1> 
+      
+      
+      
+      </div>
     )
   }
 
