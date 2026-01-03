@@ -11,6 +11,7 @@ import NotFound from './pages/NotFound'
 import AppLayout from './pages/AppLayout'
 import Login from './pages/Login'
 import CityList from './Components/CityList'
+import CountryList from './Components/CountryList'
 function App() {
 const [count, setCount] = useState(0)
 const [cities , setCities ] = useState([]);
@@ -57,7 +58,7 @@ getCities()
   
     <Route path='cities' element ={<CityList cities={cities} isLoading={isLoading}/>}></Route>
 
-    <Route path='countries' element ={<p> those are the countries Countries</p>}></Route>
+    <Route path='countries' element ={<CountryList cities={cities} isLoading={isLoading}/>}></Route>
       </Route>
 
     <Route path='login' element ={<Login/>}></Route>
