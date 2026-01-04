@@ -1,10 +1,13 @@
 /* eslint-disable react/prop-types */
+import { useCities } from "../contexts/CitiesContext";
 import CountryItem from "./CountryItem";
 import styles from "./CountryList.module.css"
 import Spinner from "./Spinner"
 
 
-export default function CountryList({cities,isLoading}) {
+export default function CountryList() {
+
+  const {cities,isLoading} = useCities()
 
     console.log("the city passed is "+cities)
     if(isLoading) return  <Spinner></Spinner>

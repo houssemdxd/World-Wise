@@ -1,7 +1,8 @@
 /* eslint-disable no-unused-vars */
 import { useParams } from "react-router-dom";
 import styles from "./City.module.css";
-
+import { useEffect,useState } from "react";
+import Spinner from "./Spinner";
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
     day: "numeric",
@@ -11,25 +12,48 @@ const formatDate = (date) =>
   }).format(new Date(date));
 
 function City() {
+const  [isLoading,setIsLoading] =useState(false);
+const [city , setCity] = useState({});
 
 
 const {id} = useParams()
 
-  // TEMP DATA
-  const currentCity = {
-    cityName: "Lisbon",
-    emoji: "🇵🇹",
-    date: "2027-10-31T15:59:59.138Z",
-    notes: "My favorite city so far!",
-  };
+// API CALL
 
-  const { cityName, emoji, date, notes } = currentCity;
+useEffect(
+  function (){
+
+async function getCity()
+{try{
+setIsLoading(true)
+    const res = await fetch(`http://localhost:9000/cities/${id}`)
+    const data = await res.json()
+    console.log(data)
+    setCity(data);
+}
+catch(e)
+{
+console.log(e.message)
+}finally
+{
+  setIsLoading(false)
+}
+
+}
+getCity()
+  }
+  
+  ,[])
+
+  const { cityName, emoji, date, notes } = city;
 
   return (
+    <>
+      {isLoading ? <Spinner/> :
+     <div className={styles.city}> 
+       
 
-    
-     <div className={styles.city}>
-      <p>City {id}</p>
+      
        <div className={styles.row}>
         <h6>City name</h6>
          <h3>
@@ -62,7 +86,8 @@ const {id} = useParams()
 
        <div>
      </div>
-   </div>
+   </div>}
+   </>
   );
 }
 

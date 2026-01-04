@@ -14,42 +14,19 @@ import CityList from './Components/CityList'
 import CountryList from './Components/CountryList'
 import City from './Components/City'
 import Form from "./Components/Form"
+import { CitiesProvider } from './contexts/CitiesContext' 
+
+
+
 
 function App() {
-const [count, setCount] = useState(0)
-const [cities , setCities ] = useState([]);
-const [isLoading ,setIsLoading] =useState(false)
-useEffect(function ()
-{
-async function getCities()
-{
-try{
-    setIsLoading(true)
-
-  const res = await fetch("http://localhost:9000/cities") ;
-
-  const data = await  res.json()
-  console.log(data)
-  setCities(data)
-}catch(error)
-{
-console.log(error.message)
-}finally{
-  setIsLoading(false)
-}
-
-}
-getCities()
-}
-
-
-,[])
 
 
 
   return (
 
 <>
+<CitiesProvider>
    <BrowserRouter>
    
    <Routes>
@@ -61,8 +38,8 @@ getCities()
     <Route  path="app" element ={<AppLayout/>}  >
       
       <Route path='cities/:id' element={<City/>}></Route>
-      <Route path='cities' element ={<CityList cities={cities} isLoading={isLoading}/>}></Route>
-      <Route path='countries' element ={<CountryList cities={cities} isLoading={isLoading}/>}></Route>
+      <Route path='cities' element ={<CityList />}></Route>
+      <Route path='countries' element ={<CountryList />}></Route>
       <Route path='form' element={<Form/>}  ></Route>
 
 
@@ -73,6 +50,8 @@ getCities()
    </Routes>
    
     </BrowserRouter>
+    
+</CitiesProvider>
     </>
   )
 }
