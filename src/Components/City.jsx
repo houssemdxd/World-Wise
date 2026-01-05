@@ -1,8 +1,12 @@
 /* eslint-disable no-unused-vars */
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styles from "./City.module.css";
 import { useEffect,useState } from "react";
 import Spinner from "./Spinner";
+import { useCities } from "../contexts/CitiesContext";
+import Button from "./Button";
+
+
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
     day: "numeric",
@@ -12,40 +16,27 @@ const formatDate = (date) =>
   }).format(new Date(date));
 
 function City() {
-const  [isLoading,setIsLoading] =useState(false);
-const [city , setCity] = useState({});
 
 
 const {id} = useParams()
 
+const {getCity,currentCity,isLoading} = useCities()
+const navigate = useNavigate();
+
 // API CALL
-
 useEffect(
-  function (){
-
-async function getCity()
-{try{
-setIsLoading(true)
-    const res = await fetch(`http://localhost:9000/cities/${id}`)
-    const data = await res.json()
-    console.log(data)
-    setCity(data);
-}
-catch(e)
+function ()
 {
-console.log(e.message)
-}finally
-{
-  setIsLoading(false)
-}
+
+getCity(id)
 
 }
-getCity()
-  }
-  
-  ,[])
 
-  const { cityName, emoji, date, notes } = city;
+,[id]
+)
+
+
+  const { cityName, emoji, date, notes } = currentCity;
 
   return (
     <>
@@ -86,6 +77,15 @@ getCity()
 
        <div>
      </div>
+
+
+<Button type="back" onClick={(e)=>{
+  e.preventDefault()
+navigate(-1);
+
+
+}} > BACK </Button>
+
    </div>}
    </>
   );

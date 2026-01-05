@@ -24,6 +24,6 @@ if(isLoading) return <Spinner></Spinner>
   )
 }
 CityList.propTypes = {
-  cities: PropTypes.array.isRequired,
-  isLoading: PropTypes.bool.isRequired,
+  cities: PropTypes.array,
+  isLoading: PropTypes.bool,
 };

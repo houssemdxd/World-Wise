@@ -36,7 +36,8 @@ function App() {
     <Route index element ={ <Homepage/> } />
 
     <Route  path="app" element ={<AppLayout/>}  >
-      
+            <Route index element ={<CityList />}></Route>
+
       <Route path='cities/:id' element={<City/>}></Route>
       <Route path='cities' element ={<CityList />}></Route>
       <Route path='countries' element ={<CountryList />}></Route>
