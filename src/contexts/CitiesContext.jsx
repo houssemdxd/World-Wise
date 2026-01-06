@@ -37,6 +37,33 @@ getCities()
 
 ,[])
 
+async function addCity(city)
+{
+
+
+try{
+    setIsLoading(true)
+
+  const res = await fetch("http://localhost:9000/cities",{
+    method:"POST",
+    body : JSON.stringify(city),
+    headers:{"Content-Type":"application/json"},
+  }) ;
+
+  const data = await  res.json()
+  console.log(data)
+  setCities(prev=>[...prev,data])
+}catch(error)
+{
+console.log(error.message)
+}finally{
+  setIsLoading(false)
+}
+
+
+}
+
+
 async function getCity(id)
 {
 // API CALL
@@ -61,7 +88,7 @@ console.log(e.message)
 
 
 
-return <CitiesContext.Provider value={{cities,isLoading,currentCity,getCity}} >
+return <CitiesContext.Provider value={{cities,isLoading,currentCity,getCity,addCity}} >
 
 {children}
 
