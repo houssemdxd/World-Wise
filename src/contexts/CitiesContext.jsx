@@ -85,10 +85,34 @@ console.log(e.message)
 }
 
 
+async function deleteCity(cityId)
+{
 
 
+try{
+    setIsLoading(true)
 
-return <CitiesContext.Provider value={{cities,isLoading,currentCity,getCity,addCity}} >
+  const res = await fetch(`http://localhost:9000/cities/${cityId}`,{
+    method:"DELETE",
+   
+    headers:{"Content-Type":"application/json"},
+  }) ;
+
+  const data = await  res.json()
+  console.log(data)
+ setCities(prev=>prev.filter((item)=>item.id !== cityId))
+}catch(error)
+{
+console.log(error.message)
+}finally{
+  setIsLoading(false)
+}
+
+
+}
+
+
+return <CitiesContext.Provider value={{cities,isLoading,currentCity,getCity,addCity,deleteCity}} >
 
 {children}
 

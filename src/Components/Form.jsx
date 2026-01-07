@@ -30,7 +30,7 @@ function Form() {
   const [lat,lng] = useUrlPosition() ;
   const [cityDetail,setCityDetail] = useState();
   const [emoji,setEmoji] = useState("");
-  const {addCity}=    useCities()
+  const {addCity,isLoading}=    useCities()
 
 
 useEffect(function (){
@@ -46,7 +46,10 @@ setEmoji(convertToEmoji(data.countryCode))
 
 } getCityByLocation()},[lat,lng])
 
-function  onSubmitForm(e){
+
+
+
+async function  onSubmitForm(e){
 e.preventDefault();
 if(!cityDetail || !date) return;
 const newCity = {
@@ -62,12 +65,13 @@ position:{lat,lng}
 }
 
 console.log(newCity)
-addCity(newCity)
+await addCity(newCity)
+navigate("/app/cities")
 }
 
 
   return (
-    <form className={styles.form} onSubmit={onSubmitForm}>
+    <form className={`${styles.form}  ${isLoading?styles.loading:""}`} onSubmit={onSubmitForm}>
       <div className={styles.row}>
         <label htmlFor="cityName">City name : {cityDetail&&cityDetail}</label>
         <input

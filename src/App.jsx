@@ -15,6 +15,7 @@ import CountryList from './Components/CountryList'
 import City from './Components/City'
 import Form from "./Components/Form"
 import { CitiesProvider } from './contexts/CitiesContext' 
+import { AuthProvider } from './contexts/FakeAuthContext' 
 
 
 
@@ -26,6 +27,8 @@ function App() {
   return (
 
 <>
+<AuthProvider>
+
 <CitiesProvider>
    <BrowserRouter>
    
@@ -36,14 +39,13 @@ function App() {
     <Route index element ={ <Homepage/> } />
 
     <Route  path="app" element ={<AppLayout/>}  >
-            <Route index element ={<CityList />}></Route>
 
+      <Route index element ={<CityList />}></Route>
       <Route path='cities/:id' element={<City/>}></Route>
       <Route path='cities' element ={<CityList />}></Route>
       <Route path='countries' element ={<CountryList />}></Route>
       <Route path='form' element={<Form/>}  ></Route>
-
-
+      
       </Route>
 
     <Route path='login' element ={<Login/>}></Route>
@@ -53,6 +55,8 @@ function App() {
     </BrowserRouter>
     
 </CitiesProvider>
+
+</AuthProvider>
     </>
   )
 }
