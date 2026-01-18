@@ -73,10 +73,15 @@ npm run dev
 📁 Project Structure
 src/
  ├── components/
+ 
  ├── pages/
+ 
  ├── context/
- ├── services/
+ 
+ ├── hooks/
+ 
  ├── App.jsx
+ 
  └── main.jsx
 
 💡 Future Improvements
@@ -95,3 +100,4 @@ Mobile responsive optimization
 
 Houssem Eddine Khalfaoui
 Frontend Developer – React Enthusiast
+
