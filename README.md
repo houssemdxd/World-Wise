@@ -4,6 +4,16 @@ WorldWise is a React Single Page Application that allows users to mark, save, an
 
 It combines mapping, routing, global state management, and protected navigation to simulate a real production-style application.
 
+📸 Demo
+
+👉 Demo video included in repository
+
+
+
+
+https://github.com/user-attachments/assets/e3290dc7-ba4a-4de9-a292-ec240107e5b1
+
+
 ✨ Features
 
 🗺 Select any place directly from the map
@@ -50,16 +60,6 @@ Route guarding & navigation flows
 
 Structuring scalable React apps
 
-📸 Demo
-
-👉 Demo video included in repository
-
-
-
-
-https://github.com/user-attachments/assets/e3290dc7-ba4a-4de9-a292-ec240107e5b1
-
-
 🚀 Getting Started
 1. Clone the repository
 git clone https://github.com/yourusername/worldwise.git
@@ -100,4 +100,5 @@ Mobile responsive optimization
 
 Houssem Eddine Khalfaoui
 Frontend Developer – React Enthusiast
+
 
